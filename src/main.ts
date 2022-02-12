@@ -1,6 +1,5 @@
 import { createApp } from "vue";
-import App from "./App.vue";
+import Terrarium from "./Terrarium.vue";
 import "./registerServiceWorker";
-import router from "./router";
 
-createApp(App).use(router).mount("#app");
+createApp(Terrarium).mount("#terrarium");
