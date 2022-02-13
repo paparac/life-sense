@@ -1,5 +1,8 @@
 <template>
-  <button class="info-button">I</button>
+  <button class="info-button" @click="changeVisiblePanel">
+    <span v-if="isVisiblePanel">X</span>
+    <span v-else>I</span>
+  </button>
 </template>
 
 <script lang="ts">
@@ -7,6 +10,10 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "InfoButton",
+  props: {
+    isVisiblePanel: Boolean,
+    changeVisiblePanel: Function,
+  },
 });
 </script>
 
@@ -16,7 +23,7 @@ export default defineComponent({
 
   border: 2px solid var(--white);
   color: var(--white);
-  background: transparent;
+  background: var(--black);
   font-weight: bold;
   border-radius: var(--width);
   width: var(--width);
@@ -27,6 +34,7 @@ export default defineComponent({
   position: absolute;
   left: var(--gap);
   top: var(--gap);
+  z-index: 10;
 }
 
 .info-button:hover {
