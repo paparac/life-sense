@@ -1,35 +1,17 @@
 <template>
-  <InfoButton
-    :isVisiblePanel="isVisiblePanel"
-    :changeVisiblePanel="changeVisiblePanel"
-  />
-  <InfoPanel :isVisiblePanel="isVisiblePanel" />
-  <Canvas />
+  <DomLayout />
+  <CanvasLayout />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
-import Canvas from "@/views/Canvas.vue";
-import InfoButton from "@/components/InfoButton.vue";
-import InfoPanel from "@/components/InfoPanel.vue";
+import CanvasLayout from "@/views/CanvasLayout.vue";
+import DomLayout from "@/views/DomLayout.vue";
 
 export default defineComponent({
   name: "Terrarium",
-  components: { Canvas, InfoButton, InfoPanel },
-
-  setup() {
-    let isVisiblePanel = ref(false);
-
-    function changeVisiblePanel(): void {
-      isVisiblePanel.value = !isVisiblePanel.value;
-    }
-
-    return {
-      isVisiblePanel,
-      changeVisiblePanel,
-    };
-  },
+  components: { CanvasLayout, DomLayout },
 });
 </script>
 
@@ -66,11 +48,6 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 p {
   margin: 0;
 }

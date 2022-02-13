@@ -1,17 +1,17 @@
 <template>
-  <div id="canvas"></div>
+  <div id="canvas-layout"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Canvas",
+  name: "CanvasLayout",
 });
 </script>
 
 <style scoped>
-#canvas {
+#canvas-layout {
   width: 100%;
   height: 100%;
 }
