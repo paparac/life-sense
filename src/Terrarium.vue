@@ -67,6 +67,7 @@ p {
   --gap: 10px;
   --black: #141414;
   --white: #f3f3f3;
+  --trasition: ease 0.2s;
 
   background: var(--black);
   color: var(--white);

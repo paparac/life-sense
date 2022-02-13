@@ -30,7 +30,7 @@ export default defineComponent({
   aspect-ratio: 1;
   cursor: pointer;
   user-select: none;
-  transition: ease 0.2s;
+  transition: var(--trasition);
   position: absolute;
   left: var(--gap);
   top: var(--gap);
