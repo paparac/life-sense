@@ -1,18 +1,117 @@
 <template>
-  <div id="canvas-layout"></div>
+  <canvas id="canvas-layout" :width="width" :height="height"></canvas>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "CanvasLayout",
+
+  setup() {
+    const width = ref(window.innerWidth);
+    const height = ref(window.innerHeight);
+
+    return { width, height };
+  },
+
+  mounted() {
+    const canvas = document.querySelector(
+      "#canvas-layout"
+    ) as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+
+    class Circle {
+      x: number;
+      y: number;
+      radius: number;
+      bgColor: string;
+
+      constructor(x = 0, y = 0, radius = 10, bgColor = "red") {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.bgColor = bgColor;
+      }
+
+      create() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.bgColor;
+        ctx.fill();
+        ctx.closePath();
+        return this;
+      }
+
+      clear() {
+        // ctx.beginPath();
+        // ctx.clearRect(
+        //   this.x - this.radius,
+        //   this.y - this.radius,
+        //   this.radius * 2,
+        //   this.radius * 2
+        // );
+        // ctx.closePath();
+        return this;
+      }
+
+      change(
+        x = this.x,
+        y = this.y,
+        radius = this.radius,
+        bgColor = this.bgColor
+      ) {
+        this.clear();
+        this.x = x > ctx.canvas.width ? 0 : x < 0 ? ctx.canvas.width : x;
+        this.y = y > ctx.canvas.height ? 0 : y < 0 ? ctx.canvas.height : y;
+        this.radius = radius;
+        this.bgColor = bgColor;
+        this.create();
+      }
+    }
+
+    const red = new Circle(
+      Number(this.width) / 2,
+      Number(this.height) / 2,
+      10,
+      "#c27171"
+    );
+
+    const green = new Circle(
+      Number(this.width) / 2 + 130,
+      Number(this.height) / 2 + 130,
+      15,
+      "#88c271"
+    );
+
+    const blue = new Circle(
+      Number(this.width) / 2 - 130,
+      Number(this.height) / 2 - 130,
+      13,
+      "#7184c2"
+    );
+
+    const black = new Circle(0, 0, 8, "#141414");
+
+    const random = (min = -10, max = 10) => {
+      return Math.random() * (max - min) + min;
+    };
+
+    setInterval(() => {
+      red.change(red.x + random(), red.y + random());
+    }, 3);
+
+    setInterval(() => {
+      green.change(green.x + random(-5, 5), green.y + random(-5, 5));
+    }, 5);
+
+    setInterval(() => {
+      blue.change(blue.x + random(-25, 25), blue.y + random(-20, 20));
+    }, 25);
+
+    setInterval(() => {
+      black.change(black.x + random(-1, 1), black.y + random(-20, 20));
+    }, 1);
+  },
 });
 </script>
-
-<style scoped>
-#canvas-layout {
-  width: 100%;
-  height: 100%;
-}
-</style>
