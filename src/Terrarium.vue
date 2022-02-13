@@ -41,9 +41,21 @@ export default defineComponent({
   font-display: fallback;
 }
 
+:root {
+  --gap: 10px;
+  --black: #141414;
+  --white: #f3f3f3;
+  --trasition: ease 0.2s;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Fira Code", monospace;
+}
+
+*::selection {
+  background: var(--white);
+  color: var(--black);
 }
 
 html,
@@ -64,11 +76,6 @@ p {
 }
 
 #terrarium {
-  --gap: 10px;
-  --black: #141414;
-  --white: #f3f3f3;
-  --trasition: ease 0.2s;
-
   background: var(--black);
   color: var(--white);
   width: 100%;
