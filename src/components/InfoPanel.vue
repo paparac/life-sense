@@ -25,13 +25,13 @@ export default defineComponent({
   background: var(--black);
   border: 2px solid var(--white);
   border-radius: 30px;
-  width: 50%;
-  height: 50%;
   position: absolute;
   left: var(--gap);
   top: var(--gap);
   padding: var(--gap);
   padding-top: calc(var(--gap) * 3);
+  width: 200px;
+  aspect-ratio: 1;
 }
 
 .info-panel__content {
