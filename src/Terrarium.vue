@@ -65,8 +65,8 @@ p {
 
 #terrarium {
   --gap: 10px;
-  --black: rgb(15, 15, 15);
-  --white: whitesmoke;
+  --black: #141414;
+  --white: #f3f3f3;
 
   background: var(--black);
   color: var(--white);
