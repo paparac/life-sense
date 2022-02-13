@@ -34,8 +34,16 @@ export default defineComponent({
 </script>
 
 <style>
+@font-face {
+  font-family: "Fira Code";
+  src: url("/FiraCode.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-display: fallback;
+}
+
 * {
   box-sizing: border-box;
+  font-family: "Fira Code", monospace;
 }
 
 html,
